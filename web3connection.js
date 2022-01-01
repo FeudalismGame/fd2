@@ -109,7 +109,7 @@ async function fetchAccountData() {
     const humanFriendlyBalance = parseFloat(ethBalance).toFixed(4);
     // Get balance
     document.querySelector("#accountbalance").style.visibility = "visible";
-    document.querySelector("#accountbalance").textContent = humanFriendlyBalance;
+    document.querySelector("#accountbalance").textContent = humanFriendlyBalance + "<img src=\"./logoWheat.png\" alt=\"Wheat\" height=\"32\" width=\"32\"/>";
   });
 
   // Because rendering account does its own RPC commucation
