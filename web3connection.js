@@ -107,7 +107,10 @@ async function fetchAccountData() {
   // Go through all accounts and get their $Wheat balance
   const rowResolvers = accounts.map(async (address) => {
     const balance = await new contractProvider.eth.Contract(wheatABI, '0x98dd4371579d35883BF37c84666b0300Ea619fFa').methods.balanceOf(address).call();
-    const mintedsoFar = await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call();
+    const mintedsoFar;
+     await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call(function(err, res){
+      mintedsoFar = res;
+    });
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
@@ -191,8 +194,8 @@ async function onConnect() {
  */
  async function onMint() {
 
-
-  await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(web3.utils.fromWei(10, "ether"), 1);
+  const mintCost = web3.utils.fromWei(10, "ether");
+  await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(mintCost, 1);
 
   await refreshAccountData();
 }
