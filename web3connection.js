@@ -108,7 +108,7 @@ async function fetchAccountData() {
   const rowResolvers = accounts.map(async (address) => {
     const balance = await new contractProvider.eth.Contract(wheatABI, '0x98dd4371579d35883BF37c84666b0300Ea619fFa').methods.balanceOf(address).call();
     let mintedsoFar;
-     await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call(function(err, res){
+     await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call(function(res){
       mintedsoFar = res;
     });
     // ethBalance is a BigNumber instance
@@ -193,11 +193,12 @@ async function onConnect() {
  * Mint token when mint button pressed.
  */
  async function onMint() {
+    const mintCost = web3.utils.fromWei(10, "ether");
+    minter = new Web3(window.ethereum);
 
-  const mintCost = web3.utils.fromWei(10, "ether");
-  await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(mintCost, 1);
+    await  provider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(mintCost, 1);
 
-  await refreshAccountData();
+    await refreshAccountData();
 }
 /**
  * Disconnect wallet button pressed.
