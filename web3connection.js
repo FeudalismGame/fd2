@@ -194,8 +194,8 @@ async function onConnect() {
     // Get a Web3 instance for the wallet
     const web3 = new Web3(provider);
 
-    const mintCost = web3.utils.fromWei(10, "ether");
-    
+    const mintCost = web3.utils.fromWei("10", "ether");
+
     await  web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(mintCost, 1);
 
     await refreshAccountData();
