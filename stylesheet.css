@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'AuldMagick';
+    src: url('AuldMagick.eot');
+    src: url('AuldMagick.eot?#iefix') format('embedded-opentype'),
+        url('AuldMagick.woff2') format('woff2'),
+        url('AuldMagick.woff') format('woff'),
+        url('AuldMagick.ttf') format('truetype'),
+        url('AuldMagick.svg#AuldMagick') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
