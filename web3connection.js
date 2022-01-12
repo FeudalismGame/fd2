@@ -130,9 +130,10 @@ async function fetchAccountData() {
 
     // Check that each token is revealed
     const  isRevealed = [];
-    for(let i=0; i < userTokens.lenght; i++)
+    for(let i=0; i < userTokens.length; i++)
     {
-      traits = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.getTokenComponents(userTokens[i]).call();
+      console.log("Checking revealed token!");
+      let traits = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.getTokenComponents(userTokens[i]).call();
       if(traits[0] == 0 && traits[1] == 0 && traits[2] == 0 && traits[3] == 0 && traits[4] == 0 && traits[5] == 0 && traits[6] == 0 && traits[7] == 0 && traits[8] == 0)  // => All traits 0 means still not defined.
       {
         isRevealed.push(false);
