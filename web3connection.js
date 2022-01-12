@@ -146,6 +146,32 @@ async function fetchAccountData() {
       console.log(i + " => " + isRevealed[i]);
     }
 
+    //Check that reveal is enabled
+    let revealEnabled = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.reveal.call().call();
+
+    //Inventory outoutput
+    let InventoryOutput = "";
+
+    for(let i=0; i < userTokens.length; i++)
+    {
+      // Check revealed or not
+      if(isRevealed[i])
+      {
+        // If character is already revealed, group as roles and ask for staking. TO BE DONE!
+      }
+      else
+      {
+        InventoryOutput = InventoryOutput + " <div class=\"card\" style=\"width: 18rem;\"><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">You need to first reveal it. <br><br><button class=\"btn btn-warning\" ";
+        // If reveal is not enabled, render button as disabled
+        if(!revealEnabled)
+        {
+          InventoryOutput = InventoryOutput + "disabled";
+        }
+        InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>";
+      }
+    }
+
+
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
