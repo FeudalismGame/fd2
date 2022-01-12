@@ -150,7 +150,7 @@ async function fetchAccountData() {
     let revealEnabled = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.reveal.call().call();
 
     //Inventory outoutput
-    let InventoryOutput = "";
+    let InventoryOutput = "<div class=\"row\">";
 
     for(let i=0; i < userTokens.length; i++)
     {
@@ -161,16 +161,20 @@ async function fetchAccountData() {
       }
       else
       {
-        InventoryOutput = InventoryOutput + " <div class=\"card\" style=\"width: 18rem;\"><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">You need to first reveal it. <br><br><button class=\"btn btn-warning\" ";
+        InventoryOutput = InventoryOutput + "<div class=\"card bg-dark\" style=\"width: 18rem;\"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
         // If reveal is not enabled, render button as disabled
         if(!revealEnabled)
         {
           InventoryOutput = InventoryOutput + "disabled";
         }
-        InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>";
+        InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>&nbsp;&nbsp;&nbsp;";
       }
+
+      
     }
 
+    InventoryOutput = InventoryOutput + "</div><br><br><br>";
+    document.getElementById("inventory").innerHTML = InventoryOutput;
 
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
