@@ -121,7 +121,7 @@ async function fetchAccountData() {
     const nftBalance = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.balanceOf(address).call();
     console.log("NFT BALANCE: " + nftBalance);
     // Getting each tokenID
-    const  userTokens;
+    const  userTokens = [];
     for(let i=0; i < nftBalance; i++)
     {
       userTokens.push(await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.tokenOfOwnerByIndex(address, i).call());
@@ -129,7 +129,7 @@ async function fetchAccountData() {
     }
 
     // Check that each token is revealed
-    const  isRevealed;
+    const  isRevealed = [];
     for(let i=0; i < userTokens.lenght; i++)
     {
       traits = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.getTokenComponents(userTokens[i]).call();
