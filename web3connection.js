@@ -107,10 +107,44 @@ async function fetchAccountData() {
   const rowResolvers = accounts.map(async (address) => {
     const balance = await new contractProvider.eth.Contract(wheatABI, '0x98dd4371579d35883BF37c84666b0300Ea619fFa').methods.balanceOf(address).call();
 
-    await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call(function(res){
-      document.querySelector("#progress-number").textContent = res + "/10,000";
-      document.querySelector("#minprogress").ariaValueNow = res;
-    });
+    let minted = await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call();
+      console.log("Total Minted: " + minted);
+      document.querySelector("#progress-number").textContent = minted + "/10,000";
+      document.querySelector("#minprogress").ariaValueNow = minted;
+
+    if(res >= 10000)
+    {
+      document.querySelector("#mintButton").setAttribute("disabled", "disabled");
+    }
+
+    // Getting NFT Balances
+    const nftBalance = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.balanceOf(address).call();
+    console.log("NFT BALANCE: " + nftBalance);
+    // Getting each tokenID
+    userTokens;
+    for(i=0; i < nftBalance; i++)
+    {
+      userTokens[i] = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.tokenOfOwnerByIndex(address, i).call();
+      console.log(i + " => " + userTokens[i]);
+    }
+
+    // Check that each token is revealed
+    isRevealed;
+    for(i=0; i <userTokens; i++)
+    {
+      traits = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.getTokenComponents(userTokens[i]).call();
+      if(traits[0] == 0 && traits[1] == 0 && traits[2] == 0 && traits[3] == 0 && traits[4] == 0 && traits[5] == 0 && traits[6] == 0 && traits[7] == 0 && traits[8] == 0)  // => All traits 0 means still not defined.
+      {
+        isRevealed[i] = false;
+      }
+      else
+      {
+        isRevealed[i] = true;
+      }
+
+      console.log(i + " => " + isRevealed[i]);
+    }
+
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
@@ -196,7 +230,7 @@ async function onConnect() {
 
     const accounts = await web3.eth.getAccounts();
 
-    const mintCost = web3.utils.fromWei("10", "ether");
+    const mintCost = 10 * 10 ** 18;
 
     await  new web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(1).send({from: accounts[0], gas: 3000000, value: mintCost});
 
