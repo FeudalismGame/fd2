@@ -149,31 +149,38 @@ async function fetchAccountData() {
     //Check that reveal is enabled
     let revealEnabled = await new contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.reveal.call().call();
 
-    //Inventory outoutput
-    let InventoryOutput = "<div class=\"row\">";
-
-    for(let i=0; i < userTokens.length; i++)
+    // Chech that user has any item
+    let InventoryOutput;
+    if(userTokens.length > 0)
     {
-      // Check revealed or not
-      if(isRevealed[i])
-      {
-        // If character is already revealed, group as roles and ask for staking. TO BE DONE!
-      }
-      else
-      {
-        InventoryOutput = InventoryOutput + "<div class=\"card bg-dark\" style=\"width: 18rem;\"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
-        // If reveal is not enabled, render button as disabled
-        if(!revealEnabled)
-        {
-          InventoryOutput = InventoryOutput + "disabled";
-        }
-        InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>&nbsp;&nbsp;&nbsp;";
-      }
+      //Inventory outoutput
+      InventoryOutput = "<div class=\"row\">";
 
-      
+      for(let i=0; i < userTokens.length; i++)
+      {
+        // Check revealed or not
+        if(isRevealed[i])
+        {
+         // If character is already revealed, group as roles and ask for staking. TO BE DONE!
+        }
+        else
+        {
+          InventoryOutput = InventoryOutput + "<div class=\"card bg-dark\" style=\"width: 18rem;\"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
+          // If reveal is not enabled, render button as disabled
+          if(!revealEnabled)
+          {
+           InventoryOutput = InventoryOutput + "disabled";
+          }
+          InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>&nbsp;&nbsp;&nbsp;";
+        }
+      }
+      InventoryOutput = InventoryOutput + "</div><br><br><br>";
+    }
+    else
+    {
+      InventoryOutput = "<div class=\"alert alert-warning\" role=\"alert\"\>Your inventory is empty! You can mint a citizen or buy from <a href=\"https://opensea.io/collection/citizens-v2-2\" target=\"_blank\">@opensea</div>";
     }
 
-    InventoryOutput = InventoryOutput + "</div><br><br><br>";
     document.getElementById("inventory").innerHTML = InventoryOutput;
 
     // ethBalance is a BigNumber instance
