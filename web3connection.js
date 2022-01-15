@@ -109,7 +109,7 @@ async function fetchAccountData() {
 
     let minted = await new  contractProvider.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.minted.call().call();
       console.log("Total Minted: " + minted);
-      document.querySelector("#progress-number").textContent = "" + minted + "/10,000";
+      document.querySelector("#progress-number").textContent = minted + "/10,000";
       document.querySelector("#minprogress").ariaValueNow = minted;
 
     if(minted >= 10000)
