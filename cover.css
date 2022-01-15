@@ -25,6 +25,11 @@ body {
   max-width: 42em;
 }
 
+.box_shadow {
+  -webkit-box-shadow: inset 2px 1px 4px -2px #000; /* Android 2.3+, iOS 4.0.2-4.2, Safari 3-4 */
+          box-shadow: inset 2px 1px 4px -2px #000; /* Chrome 6+, Firefox 4+, IE 9+, iOS 5+, Opera 10.50+ */
+}
+
 
 /*
  * Header
