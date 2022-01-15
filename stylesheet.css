@@ -1,11 +1,6 @@
 @font-face {
-    font-family: 'Minecraft';
-    src: url('Minecraft.eot');
-    src: url('Minecraft.eot?#iefix') format('embedded-opentype'),
-        url('Minecraft.woff2') format('woff2'),
-        url('Minecraft.woff') format('woff'),
-        url('Minecraft.ttf') format('truetype'),
-        url('Minecraft.svg#Minecraft') format('svg');
+    font-family: 'Alagard';
+    src: url('alagard.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
