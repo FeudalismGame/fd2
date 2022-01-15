@@ -91,8 +91,6 @@ async function fetchAccountData() {
   const chainId = await web3.eth.getChainId();
   // Load chain information over an HTTP API
   const chainData = evmChains.getChain(chainId);
-  document.querySelector("#networkname").style.visibility = "visible";
-  document.querySelector("#networkname").textContent = chainData.name;
 
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
@@ -101,7 +99,7 @@ async function fetchAccountData() {
   console.log("Got accounts", accounts);
   selectedAccount = accounts[0];
 
-  document.querySelector("#accoutname").textContent = selectedAccount;
+  document.querySelector("#accoutname").textContent = selectedAccount.substring(0,4) + "..." + selectedAccount.slice(-4);
 
   // Go through all accounts and get their $Wheat balance
   const rowResolvers = accounts.map(async (address) => {
@@ -183,7 +181,8 @@ async function fetchAccountData() {
     }
 
     document.getElementById("inventory").innerHTML = InventoryOutput;
-
+    document.getElementById("inventorytab").style.visibility = "visible";
+    document.getElementById("itemnumber").innerHTML = userTokens.length;
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
@@ -217,6 +216,7 @@ async function refreshAccountData() {
   // the user is switching acounts in the wallet
   // immediate hide this data
   document.querySelector("#connected").style.visibility = "hidden";
+  document.getElementById("inventorytab").style.visibility = "hidden";
   document.querySelector("#prepare").style.visibility = "visible";
 
   // Disable button while UI is loading.
@@ -299,6 +299,7 @@ async function onDisconnect() {
   // Set the UI back to the initial state
   document.querySelector("#prepare").style.visibility = "visible";
   document.querySelector("#connected").style.visibility = "hidden";
+  document.getElementById("inventorytab").style.visibility = "hidden";
 }
 
 
