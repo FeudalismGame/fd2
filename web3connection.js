@@ -315,7 +315,8 @@ async function onConnect() {
         }
         // handle other "switch" errors
       }
-}
+    }
+ }
 /**
  * Disconnect wallet button pressed.
  */
