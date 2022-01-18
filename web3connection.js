@@ -19,6 +19,8 @@ let web3Modal
 // Chosen wallet provider given by the dialog window
 let provider;
 
+// Current chainID
+let chainId;
 
 // Address of the selected account
 let selectedAccount;
@@ -88,7 +90,7 @@ async function fetchAccountData() {
   console.log("Web3 instance is", web3);
 
   // Get connected chain id from Ethereum node
-  const chainId = await web3.eth.getChainId();
+  chainId = await web3.eth.getChainId();
   // Load chain information over an HTTP API
   const chainData = evmChains.getChain(chainId);
 
@@ -179,9 +181,7 @@ async function fetchAccountData() {
     {
       InventoryOutput = "<div class=\"alert alert-warning\" role=\"alert\"\>Your inventory is empty! You can mint a citizen or buy from <a href=\"https://opensea.io/collection/citizens-v2-2\" target=\"_blank\">@opensea</div>";
     }
-
     document.getElementById("inventory").innerHTML = InventoryOutput;
-    document.getElementById("itemnumber").innerHTML = userTokens.length;
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
     const ethBalance = web3.utils.fromWei(balance, "ether");
