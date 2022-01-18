@@ -181,7 +181,6 @@ async function fetchAccountData() {
     }
 
     document.getElementById("inventory").innerHTML = InventoryOutput;
-    document.getElementById("inventorytab").style.visibility = "visible";
     document.getElementById("itemnumber").innerHTML = userTokens.length;
     // ethBalance is a BigNumber instance
     // https://github.com/indutny/bn.js/
@@ -216,7 +215,6 @@ async function refreshAccountData() {
   // the user is switching acounts in the wallet
   // immediate hide this data
   document.querySelector("#connected").style.visibility = "hidden";
-  document.getElementById("inventorytab").style.visibility = "hidden";
   document.querySelector("#prepare").style.visibility = "visible";
 
   // Disable button while UI is loading.
@@ -264,16 +262,59 @@ async function onConnect() {
  * Mint token when mint button pressed.
  */
  async function onMint() {
-    // Get a Web3 instance for the wallet
-    const web3 = new Web3(provider);
+    // Check user is on Polygon Network or Noy by ChainID
+    if(chainId == 137)
+    {
+      // Get a Web3 instance for the wallet
+      const web3 = new Web3(provider);
 
-    const accounts = await web3.eth.getAccounts();
+      const accounts = await web3.eth.getAccounts();
 
-    const mintCost = 10 * 10 ** 18;
+      const mintCost = 10 * 10 ** 18;
 
-    await  new web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(1).send({from: accounts[0], gas: 3000000, value: mintCost});
+      await  new web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(1).send({from: accounts[0], gas: 3000000, value: mintCost});
 
-    await refreshAccountData();
+      await refreshAccountData();
+    }
+    else
+    {
+      // Force user to switch to Polygon
+      try {
+        await ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '137' }],
+        });
+
+        // Call Mint again
+        onMint();
+      } catch (switchError) {
+        // This error code indicates that the chain has not been added to MetaMask.
+        if (switchError.code === 4902) {
+          try {
+            await ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [
+                {
+                  chainId: '137',
+                  chainName: 'Polygon Mainnet',
+                  rpcUrls: ['https://polygon-rpc.com/'] ,
+                  nativeCurrency: {
+                    name: 'POLYGON',
+                    symbol: 'MATIC', // 2-6 characters long
+                    decimals: 18
+                  },
+                },
+              ],
+            });
+
+            // Call Mint again
+            onMint();
+          } catch (addError) {
+            // handle "add" error
+          }
+        }
+        // handle other "switch" errors
+      }
 }
 /**
  * Disconnect wallet button pressed.
@@ -299,7 +340,6 @@ async function onDisconnect() {
   // Set the UI back to the initial state
   document.querySelector("#prepare").style.visibility = "visible";
   document.querySelector("#connected").style.visibility = "hidden";
-  document.getElementById("inventorytab").style.visibility = "hidden";
 }
 
 
