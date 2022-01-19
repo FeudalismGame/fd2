@@ -282,7 +282,7 @@ async function onConnect() {
       try {
         await ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '137' }],
+          params: [{ chainId: '0x89' }],
         });
 
         // Call Mint again
@@ -295,7 +295,7 @@ async function onConnect() {
               method: 'wallet_addEthereumChain',
               params: [
                 {
-                  chainId: '137',
+                  chainId: '0x89',
                   chainName: 'Polygon Mainnet',
                   rpcUrls: ['https://polygon-rpc.com/'] ,
                   nativeCurrency: {
