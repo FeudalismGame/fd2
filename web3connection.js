@@ -343,6 +343,19 @@ async function onDisconnect() {
   document.querySelector("#connected").style.visibility = "hidden";
 }
 
+// Increase mint amount
+function increaseMintAmount()
+{
+  document.querySelector("#mintcount").value = document.querySelector("#mintcount").value + 1;
+  document.querySelector("#mintcost").value = document.querySelector("#mintcount").value * 10;
+}
+
+//Decrease mint amount
+function decreaseMintAmount()
+{
+  document.querySelector("#mintcount").value = document.querySelector("#mintcount").value - 1;
+  document.querySelector("#mintcost").value = document.querySelector("#mintcount").value * 10;
+}
 
 /**
  * Main entry point.
@@ -351,4 +364,6 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#mintButton").addEventListener("click", onMint);
+  document.querySelector("#addmintcount").addEventListener("click", increaseMintAmount);
+  document.querySelector("#minusmintcount").addEventListener("click", decreaseMintAmount);
 });
