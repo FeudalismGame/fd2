@@ -155,7 +155,7 @@ async function fetchAccountData() {
     if(userTokens.length > 0)
     {
       //Inventory outoutput
-      InventoryOutput = "<div class=\"row\">";
+      InventoryOutput = "<div class=\"container-fluid\">";
 
       for(let i=0; i < userTokens.length; i++)
       {
@@ -166,7 +166,7 @@ async function fetchAccountData() {
         }
         else
         {
-          InventoryOutput = InventoryOutput + "<div class=\"card bg-dark\" style=\"width: 18rem;\"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
+          InventoryOutput = InventoryOutput + "<div class=\"card bg-dark\" style=\"width: 18rem; margin: 1rem; \"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
           // If reveal is not enabled, render button as disabled
           if(!revealEnabled)
           {
@@ -175,7 +175,7 @@ async function fetchAccountData() {
           InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>&nbsp;&nbsp;&nbsp;";
         }
       }
-      InventoryOutput = InventoryOutput + "</div><br><br><br>";
+      InventoryOutput = InventoryOutput + "</div>";
     }
     else
     {
