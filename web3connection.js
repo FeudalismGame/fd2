@@ -155,7 +155,7 @@ async function fetchAccountData() {
     if(userTokens.length > 0)
     {
       //Inventory outoutput
-      InventoryOutput = "<div class=\"container-fluid\">";
+      InventoryOutput = "<div class=\"row\">";
 
       for(let i=0; i < userTokens.length; i++)
       {
