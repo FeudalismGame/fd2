@@ -172,7 +172,7 @@ async function fetchAccountData() {
           {
            InventoryOutput = InventoryOutput + "disabled";
           }
-          InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>&nbsp;&nbsp;&nbsp;";
+          InventoryOutput = InventoryOutput + ">Reveal</button></p></div></div>";
         }
       }
       InventoryOutput = InventoryOutput + "</div>";
