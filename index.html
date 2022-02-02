@@ -35,7 +35,7 @@
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
   </head>
-  <body class="d-flex h-100 text-center text-white box_shadow" style="background-image: url('castle.jpg'); font-family: 'Press Start 2P';">
+  <body class="d-flex h-100 text-center text-white box_shadow" style="background-image: url('castle.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: #464646; font-family: 'Press Start 2P';">
     <br>
 <div class="cover-container d-flex w-100 h-100 mx-auto flex-column "><br><br>
   <header class="row g-0 position-relative" style="background-image: url('top.png');"><br>
@@ -72,11 +72,13 @@
       <div class="input-group mb-3">
         <button type="button" id="addmintcount" class="btn btn-success">+</button>
         <button type="button" id="minusmintcount" class="btn btn-danger">-</button>
-        <span class="input-group-text">Mint Count</span>
+        <span class="input-group-text">Count</span>
         <input type="text" class="form-control" placeholder="Mint count" aria-label="Mint Count" id="mintcount">
-        <span class="input-group-text">Mint Cost</span>
+        <span class="input-group-text">Cost</span>
         <input type="text" class="form-control" placeholder="0" aria-label="Mint Cost" id="mintcost" disabled>
         <span class="input-group-text"><img src="./matic-token-icon.png" alt="Matic" height="32" width="32"/></span>
+      </div>
+      <div class="input-group mb-3">
         <button type="button" id="mintButton" class="btn btn-warning">Mint</button>
       </div>
     </center>
