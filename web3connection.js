@@ -270,9 +270,16 @@ async function onConnect() {
 
       const accounts = await web3.eth.getAccounts();
 
-      const mintCost = 10 * 10 ** 18;
+      let mintAmount = parseInt(document.querySelector("#mintcount").value);
 
-      await  new web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(1).send({from: accounts[0], gas: 3000000, value: mintCost});
+      if(mintAmount > 10)
+      {
+        mintAmount = 10;
+      }
+
+      let mintCost = parseInt(document.querySelector("#mintcost").value) * 10 ** 18;
+
+      await  new web3.eth.Contract(minterABI, '0x0594FEe490F57f4eD3BDDDA0C3372480Aea6aD96').methods.mint(mintAmount).send({from: accounts[0], gas: 3000000, value: mintCost});
 
       await refreshAccountData();
     }
@@ -346,15 +353,21 @@ async function onDisconnect() {
 // Increase mint amount
 function increaseMintAmount()
 {
-  document.querySelector("#mintcount").value = document.querySelector("#mintcount").value + 1;
-  document.querySelector("#mintcost").value = document.querySelector("#mintcount").value * 10;
+  if(parseInt(document.querySelector("#mintcount").value) < 10)
+  {
+    document.querySelector("#mintcount").value = parseInt(document.querySelector("#mintcount").value) + 1;
+    document.querySelector("#mintcost").value = parseInt(document.querySelector("#mintcount").value) * 10;
+  }
 }
 
 //Decrease mint amount
 function decreaseMintAmount()
 {
-  document.querySelector("#mintcount").value = document.querySelector("#mintcount").value - 1;
-  document.querySelector("#mintcost").value = document.querySelector("#mintcount").value * 10;
+  if(parseInt(document.querySelector("#mintcount").value) > 1)
+  {
+    document.querySelector("#mintcount").value = parseInt(document.querySelector("#mintcount").value) - 1;
+    document.querySelector("#mintcost").value = parseInt(document.querySelector("#mintcount").value) * 10;
+  }
 }
 
 /**
