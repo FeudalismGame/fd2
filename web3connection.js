@@ -166,7 +166,7 @@ async function fetchAccountData() {
         }
         else
         {
-          InventoryOutput = InventoryOutput + "<div class=\"card\" style=\"width: 18rem; margin: 1rem; background-image: url('holder.png'); background-repeat:no-repeat;\"><br><img src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.<br><br><button class=\"btn btn-warning\" ";
+          InventoryOutput = InventoryOutput + "<div class=\"container\" style=\"width: 288px; height: 526px; margin: 1rem; background-image: url('holder.png'); background-repeat:no-repeat;\"><br><img style=\"width: 212px; height: 212px;\" src=\"./unrevealed.png\" class=\"card-img-top\" alt=\"Unknown Citizen\"><div class=\"card-body\"><p class=\"card-text\">Your citizens need an identity. Reveal it to see its attributes.</div><br><br><div class=\"card-footer\"><button class=\"btn btn-warning\" ";
           // If reveal is not enabled, render button as disabled
           if(!revealEnabled)
           {
