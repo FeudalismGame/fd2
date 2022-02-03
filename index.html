@@ -84,13 +84,17 @@
     </center>
     <br><br><br><br><br>
     <!--User Inventory-->
-    <h1>INVENTORY</h1>
+    <h1>INVENTORY</h1> <span class="badge bg-primary" id="inventory-count">0</span>
     <br>
-    <div id="inventory">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">Show/Hide</button>
+    <br>
+    <div class="collapse" id="inventory">
 
     </div>
     <br>
-    <h1>STAKED CITIZENS</h1>
+    <h1>STAKED CITIZENS</h1> <span class="badge bg-warning" id="staked-count">0</span>
+    <br>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#stakedcitizens" aria-expanded="false" aria-controls="stakedcitizens">Show/Hide</button>
     <br>
     <div id="stakedcitizens">
       No staked citizen.
