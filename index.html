@@ -72,7 +72,7 @@
       <div class="input-group mb-3">
         <button type="button" id="addmintcount" class="btn btn-success">+</button>
         <button type="button" id="minusmintcount" class="btn btn-danger">-</button>
-        <span class="input-group-text">Amount</span>
+        <span class="input-group-text">x</span>
         <input type="number" min="1" max="10" class="form-control" value="1" aria-label="Mint Count" id="mintcount">
         <span class="input-group-text">Cost</span>
         <input type="number" min="0" max="1000000000" class="form-control" value="10" aria-label="Mint Cost" id="mintcost" disabled>
@@ -86,22 +86,18 @@
     <!--User Inventory-->
     <h1>INVENTORY <span class="badge bg-warning" id="inventory-count">0</span></h1> 
     <br>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#inventory" aria-expanded="false" aria-controls="inventory">Show/Hide</button>
-    <br>
-    <div class="collapse" id="inventory">
+    <div id="inventory">
 
     </div>
+    <br><br><br>
+    <h1>STAKED <span class="badge bg-warning" id="staked-count">0</span></h1> 
     <br>
-    <h1>STAKED CITIZENS <span class="badge bg-warning" id="staked-count">0</span></h1> 
-    <br>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#stakedcitizens" aria-expanded="false" aria-controls="stakedcitizens">Show/Hide</button>
-    <br>
-    <div class="collapse" id="stakedcitizens">
+    <div id="stakedcitizens">
       No staked citizen.
     </div>
     <br>
     <h1>REWARDS</h1>
-    <br>
+    <br><br><br>
     <div id="rewards">
       No claimable reward!
     </div>
