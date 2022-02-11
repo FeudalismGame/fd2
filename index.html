@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Citizens in a feudal metaverse racing for juicy $Wheats. There is no superior to all stragy. Stone-Scissors-Paper based game.">
-    <meta name="author" content="The Land Lord">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Feudalism Game - Citizens In The Metaverse</title>
+    <meta name="description" content="Citizens in a feudal metaverse competing for juicy $Wheats. There is no superior stragy. Stone-Paper-Scissors based Wolf Game fork.">
+    <meta name="author" content="Feudal Landlord">
+    <title>Feudalism Game</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+    <link rel="shortcut icon" href="play/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Press%20Start%202P&display=swap" rel="stylesheet">
     
 
@@ -32,93 +31,121 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
   </head>
-  <body class="d-flex h-100 text-center text-white" style="background-image: url('castle.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: #464646; font-family: 'Press Start 2P';">
-<div class="cover-container d-flex w-100 h-100 mx-auto flex-column box_shadow"><br><br>
-  <header class="container" style="width: 672px; height: 136px; background-image: url('top.png'); background-repeat:no-repeat;"><br>
-      <h3 class="float-md-center mb-0" >FEUDALISM</h3><br>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link btn-sm text-white" target="_blank" href="https://creppy-studios.gitbook.io/feudalism/" >Whitepaper</a>
-        <a class="nav-link btn-sm text-white" id="accoutname">Not Connected</a>
-        <a style="visibility: hidden;" class="nav-link btn-sm text-white" id="accountbalance"><span id="wheatBalance"></span> <img src="./logoWheat.png" alt="Wheat" height="32" width="32"/></a>
-      </nav>
-  </header>
-  <!-- Before Connection -->
-  <main id="prepare" class="px-3">
-    <br><br><br>
-    <h1>Connect Wallet!</h1>
-    <br>
-    <p class="lead">Connect your wallet for entering the rich world of Feudalism!</p>
-    <p class="lead">
-      <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" id="btn-connect">Connect</button>
-    </p>
-  </main>
-  <!-- Connected-->
-  <main id="connected" class="px-3" style="visibility: hidden;">
-    <h1>Welcome to Feudalism!</h1>
-    <br>
-    <p class="lead">Gen.0 Citizen minting has started! You can learn advantages of Gen.0 minting via <a href="https://creppy-studios.gitbook.io/feudalism/gen.0-citizen-advantages" target="_blank">Gen.0 Citizen Advantages</a> page.</p>
-    <div class="position-relative">
-    <div class="progress">
-      <small class="justify-content-center d-flex position-absolute w-100"><span class="box_shadow" id="progress-number">0/10,000</span></small>
-      <div id="minprogress" class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 0%" aria-valuemin="0" aria-valuemax="10000"></div>
-    </div>
-    </div>
-    <br>
-    <center>
-      <div class="input-group mb-3">
-        <button type="button" id="addmintcount" class="btn btn-success">+</button>
-        <button type="button" id="minusmintcount" class="btn btn-danger">-</button>
-        <span class="input-group-text">x</span>
-        <input type="number" min="1" max="10" class="form-control" value="1" aria-label="Mint Count" id="mintcount">
-        <span class="input-group-text">Cost</span>
-        <input type="number" min="0" max="1000000000" class="form-control" value="10" aria-label="Mint Cost" id="mintcost" disabled>
-        <span class="input-group-text"><img src="./matic-token-icon.png" alt="Matic" height="32" width="32"/></span>
+  <body style="font-family: 'Press Start 2P';">
+    
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <div class="d-flex">
+        <a href="#" class="navbar-brand d-flex">
+          <img src="play/logoWheat.png" alt="Wheat" height="32" width="32"/>
+          <strong>Feudalism Game</strong>
+        </a>
       </div>
-      <div class="col text-center">
-        <button type="button" id="mintButton" class="btn btn-warning">Mint</button>
+      <div class="d-flex">
+        <a href="https://discord.gg/wkDXvUdV" class="d-flex justify-content-end btn btn-outline-light" target="_blank"><img src="discord-icon.png" width="24" height="24" alt="Join Discord!"></a>&nbsp;
+        <a href="https://twitter.com/feudalismgame" class="d-flex justify-content-end btn btn-outline-light" target="_blank"><img src="Twitter-logo.png" width="24" height="24" alt="Follow Us!"></a>>
+        <a href="play/index.html" class="d-flex justify-content-end btn btn-outline-success">Play</a>>
       </div>
-    </center>
-    <br><br><br><br><br>
-    <!--User Inventory-->
-    <h2 style="padding-top: 15px; width: 640px; height: 70px; background-image: url('basetop.png'); background-repeat:no-repeat;">INVENTORY [<span id="inventory-count">0</span>]</h2> 
-    <br>
-    <div id="inventory">
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row">
+    <div class="col-lg-3">
+      <img src="landlord.gif"  alt="Join Discord!">
+    </div>
+    <div class="col-lg-6">
+      <div class="row py-lg-5">
+        <div class="mx-auto">
+          <h1 class="fw-light">Feudalism Game</h1>
+          <p class="lead text-muted">  In Feudalism, peasants work for sweet <small class="text-warning">$Wheat</small> and lazy thieves try to steal from them. The mighty militia protects the peasants but also takes a share. <br>  In this metaverse, there is no superior strategy!</p>
+          <p>
+            <a href="https://opensea.io/collection/feudal-citizens" target="_blank" class="btn btn-outline-primary my-2"><img src="opensea.svg" width="24" height="24" alt="Feudal Citizens Collection"> Opensea</a>
+            <a href="https://creppy-studios.gitbook.io/feudalism/" target="_blank" class="btn btn-outline-dark my-2">Whitepaper</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
 
     </div>
-    <br><br><br>
-    <h2 style="padding-top: 15px; width: 640px; height: 70px; background-image: url('basetop.png'); background-repeat:no-repeat;">STAKED [<span id="inventory-count">0</span>]</h2>
-    <br>
-    <div id="stakedcitizens">
-      No staked citizen.
-    </div>
-    <br>
-    <h2 style="padding-top: 15px; width: 640px; height: 70px; background-image: url('basetop.png'); background-repeat:no-repeat;">REWARDS</h2>
-    <br><br><br>
-    <div id="rewards">
-      No claimable reward!
-    </div>
-  </main>
+  </div>
+  </section>
 
-  <footer class="mt-auto text-white-75">
-    <br>
-    <p>Follow <a href="https://twitter.com/feudalismgame">@feudalismgame</a> for latest updates!</p>
-    <br>
-  </footer>
-</div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="alert alert-info" role="alert">
+        Feudalism Game is currently at Gen.0 Minting phase! <a href="https://creppy-studios.gitbook.io/feudalism/gen.0-citizen-advantages" target="_blank">Check here</a> for learning benefits of Gen.0 mint.
+      </div>
+      <div class="alert alert-info" role="alert">
+        Curious about how will your citizen look like? Revealing is cooming soon!
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <center><img src="Peasants.gif" width="256" height="256" alt="Peasant"></center>
 
-<script type="text/javascript" src="https://unpkg.com/web3@1.5.2/dist/web3.min.js"></script>
-<script type="text/javascript" src="./web3modal.js"></script>
-<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+            <div class="card-body">
+              <p class="card-text">Peasants are the most common folks in the Feudalism metaverse. They are responsible for <small class="text-warning">$Wheat</small> production and superior to Militia Citizens. <br><br><br><br></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="https://opensea.io/collection/feudal-citizens" target="_blank" class="btn btn-sm btn-outline-primary"><img src="opensea.svg" width="24" height="24" alt="Feudal Citizens Collection"></a>
+                  <a href="https://creppy-studios.gitbook.io/feudalism/citizens-collection/what-is-citizens-nft-collection" target="_blank" class="btn btn-sm btn-outline-secondary">More</a>
+                </div>
+                <small class="text-muted">Common</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <center><img src="dummy.png" width="256" height="256" alt="Peasant"></center>
 
-<!-- This is our example code -->
-<script type="application/json" src="./wheatABI.json"></script>
+            <div class="card-body">
+              <p class="card-text">Thieves are less common folks than peasants in the Feudalism metaverse. They always look for a chance to steal juicy <small class="text-warning">$Wheats</small> from Peasant Citizens. Thieves are superior to Peasants. <br><br><br></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="https://opensea.io/collection/feudal-citizens" target="_blank" class="btn btn-sm btn-outline-primary"><img src="opensea.svg" width="24" height="24" alt="Feudal Citizens Collection"></a>
+                  <a href="https://creppy-studios.gitbook.io/feudalism/citizens-collection/what-is-citizens-nft-collection" target="_blank" class="btn btn-sm btn-outline-secondary">More</a>
+                </div>
+                <small class="text-dark">Uncommon</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <center><img src="dummy.png" width="256" height="256" alt="Peasant"></center>
 
-<!-- This is our example code -->
-<script type="text/javascript" src="./web3connection.js"></script>
+            <div class="card-body">
+              <p class="card-text">Militias are are the rarest folks in the Feudalism metaverse. They seem like provide protection to Peasants but in essence they corrupt and always keep juicy <small class="text-warning">$Wheat</small> for themselves. Militias are superior to Thieves.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="https://opensea.io/collection/feudal-citizens" target="_blank" class="btn btn-sm btn-outline-primary"><img src="opensea.svg" width="24" height="24" alt="Feudal Citizens Collection"></a>
+                  <a href="https://creppy-studios.gitbook.io/feudalism/citizens-collection/what-is-citizens-nft-collection" target="_blank" class="btn btn-sm btn-outline-secondary">More</a>
+                </div>
+                <small class="text-primary">Rare</small>
+              </div>
+            </div>
+          </div>
+        </div>
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container ">
+    <center><a href="https://polygon.technology" target="_blank"><img src="primary-badge-white.png"  alt="Powered by Polygon" class="img-fluid"></a></center>
+    <center><a href="https://chain.link" target="_blank"></a><img src="powered-by-chainlink.png"  alt="Powered by Chainlink" class="img-fluid"></a></center>
+  </div>
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
   </body>
 </html>
